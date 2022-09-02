@@ -1,0 +1,27 @@
+kind: ActiveMQArtemis
+apiVersion: broker.amq.io/v1beta1
+metadata:
+  name: brokero
+  application: brokero
+spec:
+  acceptors:
+    - port: 61616
+      expose: true
+      name: all
+      protocols: all
+      anycastPrefix: jms.queue.
+      verifyHost: false
+      sslEnabled: false
+  adminPassword: admin
+  deploymentPlan:
+    size: 1
+    persistenceEnabled: true
+    requireLogin: false
+    messageMigration: false
+    managementRBACEnabled: true
+    journalType: nio
+    jolokiaAgentEnabled: false
+    image: placeholder
+  console:
+    expose: true
+  adminUser: admin

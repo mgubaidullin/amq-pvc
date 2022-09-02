@@ -1,0 +1,29 @@
+kind: List
+apiVersion: template.openshift.io/v1
+metadata:
+  name: amq-broker-7-image-streams
+  annotations:
+    description: ImageStream definitions for Red Hat AMQ Broker 7.8 Container Image
+    openshift.io/provider-display-name: Red Hat, Inc.
+items:
+- kind: ImageStream
+  apiVersion: image.openshift.io/v1
+  metadata:
+    name: amq-broker
+    annotations:
+      openshift.io/display-name: Red Hat AMQ Broker 7.8
+      openshift.io/provider-display-name: Red Hat, Inc.
+  spec:
+    lookupPolicy:
+      local: true  
+    tags:
+    - name: '7.8'
+      annotations:
+        description: Red Hat AMQ Broker 7.8.0 image.
+        iconClass: icon-jboss
+        tags: messaging,amq,jboss,xpaas
+        supports: amq:7.8,messaging:7.8
+        version: '7.8'
+      from:
+        kind: DockerImage
+        name: registry.redhat.io/amq7/amq-broker:7.8
